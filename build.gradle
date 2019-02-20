@@ -1,0 +1,33 @@
+group 'com.ncu'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'org.akhikhl.gretty'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+buildscript{
+    repositories {
+        mavenCentral()
+    }
+
+
+    dependencies {
+        classpath 'org.akhikhl.gretty:gretty:+'
+    }
+}
+
+if(!project.plugins.findPlugin(org.akhikhl.gretty.GrettyPlugin))
+    project.apply(plugin: org.akhikhl.gretty.GrettyPlugin)
+
+dependencies {
+    testCompile ('junit:junit:4.11')
+
+    compile( 'org.springframework:spring-context:5.1.5.RELEASE',
+     'joda-time:joda-time:2.10.1')
+}
